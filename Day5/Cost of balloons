@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class BalloonCost {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            int costGreen = sc.nextInt();
+            int costPurple = sc.nextInt();
+            int n = sc.nextInt(); 
+
+            int problem1Solved = 0;
+            int problem2Solved = 0;
+
+            for (int i = 0; i < n; i++) {
+                int p1 = sc.nextInt();
+                int p2 = sc.nextInt();
+                if (p1 == 1) problem1Solved++;
+                if (p2 == 1) problem2Solved++;
+            }
+
+            int option1 = problem1Solved * costGreen + problem2Solved * costPurple;
+            int option2 = problem1Solved * costPurple + problem2Solved * costGreen;
+
+            System.out.println(Math.min(option1, option2));
+        }
+
+        sc.close();
+    }
+}
