@@ -1,0 +1,50 @@
+import java.util.*;
+
+public class SimpleSortBySetBits {
+
+    // Function to count set bits in a number
+    public static int countSetBits(int n) {
+        int count = 0;
+        while (n > 0) {
+            if ((n & 1) == 1) count++;
+            n = n >> 1;
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt(); // number of test cases
+
+        while (t-- > 0) {
+            int n = sc.nextInt(); // size of array
+            int[] arr = new int[n];
+
+            for (int i = 0; i < n; i++) {
+                arr[i] = sc.nextInt();
+            }
+            List<Integer> evenList = new ArrayList<>();
+            List<Integer> oddList = new ArrayList<>();
+
+            for (int num : arr) {
+                if (countSetBits(num) % 2 == 0) {
+                    evenList.add(num);
+                } else {
+                    oddList.add(num);
+                }
+            }
+            Collections.sort(evenList);
+            Collections.sort(oddList);
+            for (int num : evenList) {
+                System.out.print(num + " ");
+            }
+            for (int num : oddList) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
